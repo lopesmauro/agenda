@@ -1,0 +1,44 @@
+{{>partials/header}}
+{{>partials/navbar}}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2"></div>
+
+        <div class="col-lg-8 my-3">
+            <h1 class="text-center">Agenda</h1>
+
+            <p class="text-center lead">Seus contatos estão logo abaixo.</p>
+
+            {{>partials/messages}}
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <td>Nome</td>
+                            <td>Sobrenome</td>
+                            <td>E-mail</td>
+                            <td>Telefone</td>
+                        </tr>
+                        {{#contacts}}
+                            <tr>
+                                <td>{{name}}</td>
+                                <td>{{surname}}</td>
+                                <td>{{email}}</td>
+                                <td>{{telephone}}</td>
+                                <td><a href="/contact/index/{{id}}">Editar</a></td>
+                                <td><a class="text-danger" href="/contact/delete/{{id}}">Excluir</a></td>
+                            </tr>
+                        {{/contacts}}
+                    </table>
+                </div>
+            {{^contacts}}
+                <p class="text-center lead">Nenhum contato encontrado.</p>
+            {{/contacts}}
+            
+        </div> 
+
+        <div class="col-lg-2"></div>
+    </div>
+</div>
+
+{{>partials/footer}}

@@ -1,0 +1,50 @@
+{{>partials/header}}
+{{>partials/navbar}}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2"></div>
+
+        <div class="col-lg-8 my-3">
+            <h1 class="text-center">Contato</h1>
+            <p class="text-center lead">Crie ou edite seus contatos abaixo.</p>
+
+            {{>partials/messages}}
+            
+            {{#contact._id}}
+                <form action="/contact/edit/{{contact._id}}" method="POST">
+            {{/contact._id}}
+            {{^contact._id}}
+                <form action="/contact/register" method="POST">
+            {{/contact._id}}
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                    <div class="form-group">
+                        <label>Nome</label>
+                        <input type="text" class="form-control" name="name" placeholder="Digite aqui" value="{{contact.name}}">
+                    </div>
+                    <div class="form-group">
+                        <label>Sobrenome</label>
+                        <input type="text" class="form-control" name="surname" placeholder="Digite aqui" value="{{contact.surname}}">
+                    </div>
+                    <div class="form-group">
+                        <label>E-mail</label>
+                        <input type="email" class="form-control" name="email" placeholder="Digite aqui" value="{{contact.email}}">
+                    </div>
+                    <div class="form-group">
+                        <label>Telefone</label>
+                        <input type="tel" class="form-control" name="telephone" placeholder="Digite aqui" value="{{contact.telephone}}">
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Salvar</button>
+                    {{#contact._id}}
+                        <button class="btn btn-danger mt-3"><a class="text-light text-decoration-none" href="/contact/delete/{{contact._id}}">Excluir</a></button>
+                    {{/contact._id}}
+                </form>
+
+            
+        </div>
+
+        <div class="col-lg-2"></div>
+    </div>
+</div>
+
+{{>partials/footer}}
