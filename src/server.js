@@ -51,6 +51,7 @@ server.engine('mustache', mustache())
 
 server.use(csrf()) 
 //Próprios Middlewares
+
 server.use(csurfToken)
 server.use(checkCsurfError)
 server.use(flashMessagesMiddleware)
